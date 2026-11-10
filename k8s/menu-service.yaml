@@ -55,15 +55,15 @@ spec:
               valueFrom: {secretKeyRef: {name: db-secret, key: password}}
           readinessProbe:
             httpGet: {path: /actuator/health/readiness, port: 5001}
-            initialDelaySeconds: 45
+            initialDelaySeconds: 90
             periodSeconds: 10
           livenessProbe:
             httpGet: {path: /actuator/health/liveness, port: 5001}
-            initialDelaySeconds: 90
+            initialDelaySeconds: 240
             periodSeconds: 15
           resources:
             requests: {cpu: 200m, memory: 384Mi}
-            limits: {cpu: 500m, memory: 768Mi}
+            limits: {cpu: 1000m, memory: 768Mi}
 ---
 apiVersion: v1
 kind: Service
